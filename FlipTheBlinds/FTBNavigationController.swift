@@ -22,8 +22,6 @@ extension FTBNavigationController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        print("FTBAnimationController: navigation controller delegate, return animation controller")
-        
         switch operation {
         case .pop:
             animationController.displayType = .pop

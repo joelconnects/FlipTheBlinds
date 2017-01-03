@@ -17,10 +17,6 @@ class TabBarController: FTBTabBarController {
         
         configureTabs()
         
-        self.delegate = self
-        animationController.setFromTransition(direction: .up, speed: .moderate)
-        animationController.setToTransition(direction: .right, speed: .moderate)
-        
     }
 
 }

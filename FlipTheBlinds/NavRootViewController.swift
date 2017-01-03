@@ -18,17 +18,12 @@ class NavRootViewController: UIViewController {
         configImageView()
         configButton()
         
-        let navController = self.navigationController as? FTBNavigationController
-        navController?.delegate = navController
-        navController?.animationController.setPushTransition(direction: .left, speed: .moderate)
-        navController?.animationController.setPopTransition(direction: .right, speed: .moderate)
-        
     }
     
     func buttonTapped(_ sender: UIButton) {
         
-        let toViewController = NavStackViewController()
-        self.navigationController?.pushViewController(toViewController, animated: true)
+        let navStackViewController = NavStackViewController()
+        self.navigationController?.pushViewController(navStackViewController, animated: true)
     }
     
 }

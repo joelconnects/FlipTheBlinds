@@ -18,9 +18,6 @@ class FromViewController: FTBFromViewController {
         configImageView()
         configButton()
         
-        animationController.setFromTransition(direction: .up, speed: .moderate)
-        animationController.setToTransition(direction: .down, speed: .moderate)
-        
     }
     
     func buttonTapped(_ sender: UIButton) {
