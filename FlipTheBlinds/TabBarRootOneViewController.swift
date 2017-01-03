@@ -8,8 +8,9 @@
 
 import UIKit
 
+// MARK: Main
 
-class NavToViewController: UIViewController {
+class TabBarRootOneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,15 +18,18 @@ class NavToViewController: UIViewController {
         configImageView()
         
     }
+
 }
 
-extension NavToViewController {
+// MARK: Configure View
+
+extension TabBarRootOneViewController {
     
     fileprivate func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "dracula")
+        imageView.image = #imageLiteral(resourceName: "gomez")
         
         view.addSubview(imageView)
         
@@ -38,3 +42,4 @@ extension NavToViewController {
     }
     
 }
+

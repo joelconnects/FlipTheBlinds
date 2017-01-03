@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Main
 
-class NavFromViewController: FTBPresentingViewController {
+class NavRootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,15 +18,16 @@ class NavFromViewController: FTBPresentingViewController {
         configImageView()
         configButton()
         
-        animationController.setFromTransition(direction: .left, speed: .moderate)
-        animationController.setToTransition(direction: .right, speed: .moderate)
+        let navController = self.navigationController as? FTBNavigationController
+        navController?.delegate = navController
+        navController?.animationController.setPushTransition(direction: .left, speed: .moderate)
+        navController?.animationController.setPopTransition(direction: .right, speed: .moderate)
         
     }
     
     func buttonTapped(_ sender: UIButton) {
         
-        let toViewController = NavToViewController()
-        self.navigationController?.delegate = self
+        let toViewController = NavStackViewController()
         self.navigationController?.pushViewController(toViewController, animated: true)
     }
     
@@ -34,7 +35,7 @@ class NavFromViewController: FTBPresentingViewController {
 
 // MARK: Configure View
 
-extension NavFromViewController {
+extension NavRootViewController {
     
     fileprivate func configImageView() {
         
@@ -69,7 +70,7 @@ extension NavFromViewController {
         button.setTitle("GO", for: UIControlState())
         button.frame = CGRect(x: buttonXorigin, y: buttonYorigin, width: buttonSize, height: buttonSize)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
-        button.addTarget(self, action: #selector(FromViewController.buttonTapped(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         view.addSubview(button)
         
     }

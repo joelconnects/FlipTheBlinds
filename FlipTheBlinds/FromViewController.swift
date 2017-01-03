@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Main
 
-class FromViewController: FTBPresentingViewController {
+class FromViewController: FTBFromViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,7 @@ extension FromViewController {
         button.setTitle("GO", for: UIControlState())
         button.frame = CGRect(x: buttonXorigin, y: buttonYorigin, width: buttonSize, height: buttonSize)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
-        button.addTarget(self, action: #selector(FromViewController.buttonTapped(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         view.addSubview(button)
         
     }

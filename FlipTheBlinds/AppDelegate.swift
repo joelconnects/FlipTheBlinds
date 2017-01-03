@@ -17,16 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Demo Modal Transition
-        let mainViewController = FromViewController()
+        let rootViewController = FromViewController()
         
         // Demo Navigation Transition
-//        let mainViewController = UINavigationController(rootViewController: NavFromViewController())
+//        let rootViewController = FTBNavigationController(rootViewController: NavRootViewController())
+        
+        // Demo Tab Bar Transition
+//        let rootViewController = TabBarController()
         
         let frame = UIScreen.main.bounds
         window = UIWindow(frame: frame)
         
         if let window = window {
-            window.rootViewController = mainViewController
+            window.rootViewController = rootViewController
             window.makeKeyAndVisible()
         }
         

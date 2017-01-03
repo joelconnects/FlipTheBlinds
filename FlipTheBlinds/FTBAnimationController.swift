@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: Main Configuration
+// MARK: Main
 
 class FTBAnimationController: NSObject {
 
@@ -17,6 +17,8 @@ class FTBAnimationController: NSObject {
     fileprivate var fromSettings: Settings
     fileprivate var toSettings: Settings
     fileprivate var settings: Settings
+    
+    fileprivate var isFromTab: Bool?
     
     fileprivate var delayIntervals = [Int]()
     
@@ -38,7 +40,7 @@ class FTBAnimationController: NSObject {
         }
     }
     
-    var displayType: DisplayType = .present {
+    var displayType: DisplayType = .none {
         didSet {
             switch displayType {
             case .dismiss:
@@ -49,15 +51,27 @@ class FTBAnimationController: NSObject {
                 settings = fromSettings
             case .push:
                 settings = fromSettings
+            case .tabSelected:
+                if isFromTab == false {
+                    settings = toSettings
+                    isFromTab = true
+                } else {
+                    settings = fromSettings
+                    isFromTab = false
+                }
+            default:
+                break
             }
         }
     }
 
     enum DisplayType {
         case dismiss
+        case none
         case pop
         case push
         case present
+        case tabSelected
     }
     
     enum Direction {
@@ -79,6 +93,12 @@ class FTBAnimationController: NSObject {
         toSettings = (.down, .moderate)
         settings = fromSettings
     }
+
+}
+
+// MARK: Transition Settings
+
+extension FTBAnimationController {
     
     func setFromTransition(direction: Direction, speed: Speed) {
         fromSettings = (direction, speed)
@@ -87,7 +107,15 @@ class FTBAnimationController: NSObject {
     func setToTransition(direction: Direction, speed: Speed) {
         toSettings = (direction, speed)
     }
-
+    
+    func setPushTransition(direction: Direction, speed: Speed) {
+        fromSettings = (direction, speed)
+    }
+    
+    func setPopTransition(direction: Direction, speed: Speed) {
+        toSettings = (direction, speed)
+    }
+    
 }
 
 // MARK: Transitioning Delegate
@@ -107,13 +135,17 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
             let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
              else {return}
         
-       var fromImage: UIImage
+       var fromImage = UIImage()
         
         switch displayType {
         case .present, .dismiss:
             fromImage = fromVC.view.drawImage()
         case .pop, .push:
             fromImage = fromVC.view.renderImage()
+        case .tabSelected:
+            fromImage = fromVC.view.drawImage()
+        default:
+            break
         }
 
         let containerView = transitionContext.containerView
@@ -128,13 +160,17 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
         let durationIntervals = 4.0
         let intervalDuration = (((Double(slices)-1) * delay) - duration) / -durationIntervals
         
-        var toImage: UIImage
+        var toImage = UIImage()
         
         switch displayType {
         case .present, .dismiss:
             toImage = toVC.view.drawImage()
         case .pop, .push:
             toImage = toVC.view.renderImage()
+        case .tabSelected:
+            toImage = toVC.view.drawImage()
+        default:
+            break
         }
     
         toVC.view.isHidden = true
@@ -227,6 +263,7 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
 }
 
 // MARK: Animation
+
 extension FTBAnimationController {
     
     fileprivate func animate(contentView: ContentView, intervalDuration duration: TimeInterval, delay: TimeInterval, completion: @escaping ()->()) {
@@ -357,7 +394,7 @@ fileprivate final class ContentView: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("ERROR: ContentView does not use Interface Builder")
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func configureSubviews() {

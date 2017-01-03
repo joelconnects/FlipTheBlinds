@@ -8,16 +8,20 @@
 
 import UIKit
 
-enum SliceType {
+// MARK: Image slice type
+
+enum FTBSliceType {
     
     case horizontal
     case vertical
     
 }
 
+// MARK: Generate image slices
+
 extension UIImage {
     
-    func generateImage(slices: Int, type: SliceType) -> [UIImage] {
+    func generateImage(slices: Int, type: FTBSliceType) -> [UIImage] {
         
         var imageSlices: [UIImage] = []
         let imageRef = self.cgImage
@@ -58,6 +62,8 @@ extension UIImage {
     }
     
 }
+
+// MARK: Draw/Render Image
 
 extension UIView {
     

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: Main
+
 class ToViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -25,6 +27,8 @@ class ToViewController: UIViewController {
     }
 
 }
+
+// MARK: Configure View
 
 extension ToViewController {
     
@@ -62,7 +66,7 @@ extension ToViewController {
         button.frame = CGRect(x: buttonXorigin, y: buttonYorigin, width: buttonSize, height: buttonSize)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
         
-        button.addTarget(self, action: #selector(ToViewController.buttonTapped(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         
         view.addSubview(button)
         
