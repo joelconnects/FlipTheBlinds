@@ -11,7 +11,7 @@ import UIKit
 // MARK: Main
 
 class FTBAnimationController: NSObject {
-
+    
     typealias Settings = (direction: Direction, speed: Speed)
     
     fileprivate var fromSettings: Settings
@@ -64,7 +64,7 @@ class FTBAnimationController: NSObject {
             }
         }
     }
-
+    
     enum DisplayType {
         case dismiss
         case none
@@ -93,7 +93,7 @@ class FTBAnimationController: NSObject {
         toSettings = (.down, .moderate)
         settings = fromSettings
     }
-
+    
 }
 
 // MARK: Transition Settings
@@ -125,7 +125,7 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
         return settings.speed.rawValue
-    
+        
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -133,28 +133,26 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
         guard
             let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
             let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
-             else {return}
+            else {return}
         
-       var fromImage = UIImage()
+        var fromImage = UIImage()
         
         switch displayType {
-        case .present, .dismiss:
+        case .present, .dismiss, .tabSelected:
             fromImage = fromVC.view.drawImage()
         case .pop, .push:
             fromImage = fromVC.view.renderImage()
-        case .tabSelected:
-            fromImage = fromVC.view.drawImage()
         default:
             break
         }
-
+        
         let containerView = transitionContext.containerView
         containerView.addSubview(toVC.view)
         
         let backgroundView = UIView(frame: containerView.frame)
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
         containerView.addSubview(backgroundView)
-    
+        
         let duration = transitionDuration(using: transitionContext)
         let delay = duration * delayMultiplier
         let durationIntervals = 4.0
@@ -163,18 +161,16 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
         var toImage = UIImage()
         
         switch displayType {
-        case .present, .dismiss:
+        case .present, .dismiss, .tabSelected:
             toImage = toVC.view.drawImage()
         case .pop, .push:
             toImage = toVC.view.renderImage()
-        case .tabSelected:
-            toImage = toVC.view.drawImage()
         default:
             break
         }
-    
+        
         toVC.view.isHidden = true
-
+        
         var fromImages = [UIImage]()
         var toImages = [UIImage]()
         
@@ -243,10 +239,10 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
         case .down, .right:
             
             for index in 0..<slices {
-    
+                
                 let delayInterval = delayIntervals.removeFirst()
                 let animationDelay = delay * Double(delayInterval)
-    
+                
                 animate(contentView: backgroundView.subviews[index] as! ContentView, intervalDuration: intervalDuration, delay: animationDelay, completion: {
                     if index == (self.slices - 1) {
                         toVC.view.isHidden = false
@@ -259,7 +255,7 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
         }
         
     }
-
+    
 }
 
 // MARK: Animation
