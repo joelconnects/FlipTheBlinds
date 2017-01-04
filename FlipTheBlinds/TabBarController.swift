@@ -29,11 +29,13 @@ extension TabBarController {
         
         let rootOneVC = TabBarRootOneViewController()
         let rootTwoVC = TabBarRootTwoViewController()
-        self.setViewControllers([rootOneVC, rootTwoVC], animated: true)
+        let rootThreeVC = TabBarRootThreeViewController()
+        self.setViewControllers([rootOneVC, rootTwoVC, rootThreeVC], animated: true)
         if let tabBarItems = self.tabBar.items {
             
-            tabBarItems[0].title = "ONE"
-            tabBarItems[1].title = "TWO"
+            tabBarItems[0].title = "1"
+            tabBarItems[1].title = "2"
+            tabBarItems[2].title = "3"
             
         }
         

@@ -36,8 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        let rootViewController = TabBarController()
 //        rootViewController.delegate = rootViewController
-//        rootViewController.animationController.setFromTransition(direction: .up, speed: .moderate)
-//        rootViewController.animationController.setToTransition(direction: .right, speed: .moderate)
+//        rootViewController.animationController.setFromTransition(direction: .down, speed: .moderate)
+//        rootViewController.animationController.setToTransition(direction: .down, speed: .moderate)
         
         
         let frame = UIScreen.main.bounds

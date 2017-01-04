@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D9EA0D01E1C80BD00EDC645 /* TabBarRootThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA0CF1E1C80BD00EDC645 /* TabBarRootThreeViewController.swift */; };
 		5DC7367C1E1B423900FF0EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7367B1E1B423900FF0EC7 /* AppDelegate.swift */; };
 		5DC736811E1B423900FF0EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC7367F1E1B423900FF0EC7 /* Main.storyboard */; };
 		5DC736831E1B423900FF0EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC736821E1B423900FF0EC7 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D9EA0CF1E1C80BD00EDC645 /* TabBarRootThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarRootThreeViewController.swift; sourceTree = "<group>"; };
 		5DC736781E1B423900FF0EC7 /* FlipTheBlinds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipTheBlinds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC7367B1E1B423900FF0EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC736801E1B423900FF0EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				5DC736A71E1B728600FF0EC7 /* TabBarController.swift */,
 				5DC7369F1E1B5F4800FF0EC7 /* TabBarRootOneViewController.swift */,
 				5DC736A11E1B5F5B00FF0EC7 /* TabBarRootTwoViewController.swift */,
+				5D9EA0CF1E1C80BD00EDC645 /* TabBarRootThreeViewController.swift */,
 			);
 			name = TabTransitionDemo;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				5DC736A81E1B728600FF0EC7 /* TabBarController.swift in Sources */,
 				5DC736A01E1B5F4800FF0EC7 /* TabBarRootOneViewController.swift in Sources */,
 				5DC736951E1B428D00FF0EC7 /* ToViewController.swift in Sources */,
+				5D9EA0D01E1C80BD00EDC645 /* TabBarRootThreeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
