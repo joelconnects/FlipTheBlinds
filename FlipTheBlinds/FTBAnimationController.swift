@@ -43,7 +43,7 @@ public class FTBAnimationController: NSObject {
         return (((Double(slices)-1) * delay) - settings.speed.rawValue) / -durationIntervals
     }
 
-    init(displayType: DisplayType, direction: Direction, speed: Speed) {
+    public init(displayType: DisplayType, direction: Direction, speed: Speed) {
         
         self.displayType = displayType
         self.settings = (direction, speed)
@@ -62,7 +62,7 @@ public class FTBAnimationController: NSObject {
 
 extension FTBAnimationController {
     
-    enum DisplayType {
+    public enum DisplayType {
         case dismiss
         case pop
         case push
@@ -70,14 +70,14 @@ extension FTBAnimationController {
         case tabSelected
     }
     
-    enum Direction {
+    public enum Direction {
         case down
         case left
         case right
         case up
     }
     
-    enum Speed: Double {
+    public enum Speed: Double {
         case fast = 0.6
         case moderate = 0.9
         case slow = 2.0
