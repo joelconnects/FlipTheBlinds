@@ -1,9 +1,9 @@
 //
-//  File.swift
+//  AppController.swift
 //  FlipTheBlinds
 //
-//  Created by Joel Bell on 1/4/17.
-//  Copyright © 2017 Flatiron School. All rights reserved.
+//  Created by Joel Bell on 1/2/17.
+//  Copyright © 2017 Joel Bell. All rights reserved.
 //
 
 import UIKit

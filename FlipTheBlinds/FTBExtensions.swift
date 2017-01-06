@@ -1,9 +1,9 @@
 //
-//  Extensions.swift
-//  FlipTheBlindsNonsense
+//  FTBExtensions.swift
+//  FlipTheBlinds
 //
-//  Created by Joel Bell on 11/22/16.
-//  Copyright © 2016 Flatiron School. All rights reserved.
+//  Created by Joel Bell on 1/2/17.
+//  Copyright © 2017 Joel Bell. All rights reserved.
 //
 
 import UIKit

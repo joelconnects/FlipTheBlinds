@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
-//  FlipTheBlindsNonsense
+//  IBNavRootViewController.swift
+//  FlipTheBlinds
 //
-//  Created by Joel Bell on 9/4/16.
-//  Copyright © 2016 Flatiron School. All rights reserved.
+//  Created by Joel Bell on 1/2/17.
+//  Copyright © 2017 Joel Bell. All rights reserved.
 //
 
 import UIKit
