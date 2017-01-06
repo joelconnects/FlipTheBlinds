@@ -25,13 +25,13 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
  * **Modal Presentations**
   * Assign the `transitioningDelegate` of the view controller being presented to the presenting view controller.
   * Add an extension to the presenting view controller that includes adherence and methods for the `UIViewControllerTransitioningDelegate`.
-  * Return an instance of the `FTBAnimationController(displayType:direction:speed:)` animator object.
+  * Return instances of the `FTBAnimationController(displayType:direction:speed:)` animator object for presenting and dismissing.
 
 ```swift
 
   // MARK: Programmatic option
 
-  func action() {
+  func presentAction() {
 
     let toViewController = ToViewController()
     toViewController.transitioningDelegate = self
@@ -70,8 +70,49 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
   }
 ```
 
+ * **Navigation**
+  * Assign the `delegate` of the navigation controller to the root view controller.
+  * Add an extension to the root view controller that includes the `UINavigationControllerDelegate` and necessary transitioning method.
+  * Return instances of the `FTBAnimationController(displayType:direction:speed:)` animator object for push and pop.
+
+```swift
+
+  // MARK: Programmatic option
+
+  func pushAction() {
+
+      let navStackViewController = NavStackViewController()
+      self.navigationController?.delegate = self
+      self.navigationController?.pushViewController(navStackViewController, animated: true)
+
+  }
+
+  // MARK: Transitioning Delegate
+
+  extension NavRootViewController: UINavigationControllerDelegate {
+
+   func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+       switch operation {
+       case .pop:
+           return FTBAnimationController(displayType: .pop, direction: .right, speed: .moderate)
+       case .push:
+           return FTBAnimationController(displayType: .push, direction: .left, speed: .moderate)
+       default:
+           return nil
+       }
+
+   }
+   
+  }
+```
+
 
 ## Known Issues
 
  * Drawing/Rendering images in the animator object is problematic for the simulator, especially iPhone 7/7P. Device testing is recommended.
  * `drawHierarchy(in:afterScreenUpdates:)` is used for modal presentations. Waiting for the screen to update may cause an inconspicuous flicker.   
+
+## License
+
+ * FlipTheBlinds is released under the MIT license. See LICENSE for details.
