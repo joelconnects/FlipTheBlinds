@@ -10,27 +10,25 @@ import UIKit
 
 // MARK: Main
 
-class TabBarRootOneViewController: UIViewController {
+class IBNavStackViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configImageView()
         
-        // POD: Set UITabBarControllerDelegate
-        self.tabBarController?.delegate = self
     }
-
 }
 
 // MARK: Configure View
 
-extension TabBarRootOneViewController {
+extension IBNavStackViewController {
     
     fileprivate func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "redImage")
+        imageView.image = #imageLiteral(resourceName: "coupleImage")
         
         view.addSubview(imageView)
         
@@ -43,16 +41,3 @@ extension TabBarRootOneViewController {
     }
     
 }
-
-// POD: Add Tab Extension
-
-extension TabBarRootOneViewController: UITabBarControllerDelegate {
-    
-    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        return FTBAnimationController(displayType: .tabSelected, direction: .down, speed: .moderate)
-        
-    }
-    
-}
-

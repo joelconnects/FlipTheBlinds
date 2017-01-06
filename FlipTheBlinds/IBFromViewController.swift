@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Main
 
-class ToViewController: UIViewController {
+class IBFromViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,21 +22,32 @@ class ToViewController: UIViewController {
     
     func buttonTapped(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "modalSegue", sender: self)
         
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "modalSegue", let destinationViewController = segue.destination as? IBToViewController {
+            
+            // POD: Set transitioningDelegate
+            destinationViewController.transitioningDelegate = self
+            
+        }
+        
+    }
+    
 }
 
 // MARK: Configure View
 
-extension ToViewController {
+extension IBFromViewController {
     
     fileprivate func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "treeImage")
+        imageView.image = #imageLiteral(resourceName: "treeGlobeImage")
         
         view.addSubview(imageView)
         
@@ -59,18 +70,37 @@ extension ToViewController {
         let buttonXorigin = (screenWidth / 2) - (buttonSize / 2)
         let buttonYorigin = screenHeight - buttonSize - buttonYconstant
         
-        let button = UIButton()
+        let button = UIButton(type: .custom)
         button.alpha = 0.7
         button.backgroundColor = UIColor.black
         button.setTitleColor(UIColor.white, for: UIControlState())
-        button.setTitle("BACK", for: UIControlState())
+        button.setTitle("GO", for: UIControlState())
         button.frame = CGRect(x: buttonXorigin, y: buttonYorigin, width: buttonSize, height: buttonSize)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
-        
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-        
         view.addSubview(button)
         
     }
     
 }
+
+// POD: Modal Extension
+
+extension IBFromViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return FTBAnimationController(displayType: .present, direction: .up, speed: .moderate)
+        
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return FTBAnimationController(displayType: .dismiss, direction: .down, speed: .moderate)
+        
+    }
+    
+}
+
+
+

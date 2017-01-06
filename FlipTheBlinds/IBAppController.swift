@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppController: UIViewController {
+class IBAppController: UIViewController {
     
     var containerView: UIView!
     var menuView: UIView!
@@ -45,13 +45,13 @@ class AppController: UIViewController {
         addInitialActing(viewController: actingViewController)
         
     }
-
+    
 }
 
 // MARK: Set Up
 
-extension AppController {
-
+extension IBAppController {
+    
     fileprivate func configureContainerView() {
         
         containerView = UIView()
@@ -131,9 +131,9 @@ extension AppController {
             button.heightAnchor.constraint(equalTo: button.widthAnchor, multiplier: 1).isActive = true
             
         }
-
+        
     }
-
+    
     fileprivate func configureMenuButton() {
         
         menuButton = UIImageView()
@@ -163,7 +163,7 @@ extension AppController {
 
 // MARK: Actions
 
-extension AppController {
+extension IBAppController {
     
     func menuSwiped(_ sender: UISwipeGestureRecognizer) {
         
@@ -248,15 +248,16 @@ extension AppController {
 
 // MARK: View Controller Generation
 
-extension AppController {
+extension IBAppController {
     
     fileprivate func generateViewController(forType type: DemoType) -> UIViewController {
         
         switch type {
         case .modal:
-            return FromViewController()
+            return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "fromVC")
         case .navigation:
-            return UINavigationController(rootViewController: NavRootViewController())
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navRootVC")
+            return UINavigationController(rootViewController: vc)
         case .tab:
             return generateTabBarController()
         }
@@ -265,28 +266,20 @@ extension AppController {
     
     fileprivate func generateTabBarController() -> UITabBarController {
         
-        let tabBarController = UITabBarController()
-        let rootOneVC = TabBarRootOneViewController()
-        let rootTwoVC = TabBarRootTwoViewController()
-        let rootThreeVC = TabBarRootThreeViewController()
-        tabBarController.setViewControllers([rootOneVC, rootTwoVC, rootThreeVC], animated: true)
-
-        let customTabBarItemOne = UITabBarItem(title: "RED", image: #imageLiteral(resourceName: "redTab"), selectedImage: nil)
-        let customTabBarItemTwo = UITabBarItem(title: "GREEN", image: #imageLiteral(resourceName: "greenTab"), selectedImage: nil)
-        let customTabBarItemThree = UITabBarItem(title: "BLUE", image: #imageLiteral(resourceName: "blueTab"), selectedImage: nil)
+        let rootOneVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabRootOneVC")
+        let rootTwoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabRootTwoVC")
+        let rootThreeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabRootThreeVC")
+        let tabVC = UITabBarController()
+        tabVC.viewControllers = [rootOneVC, rootTwoVC, rootThreeVC]
         
-        rootOneVC.tabBarItem = customTabBarItemOne
-        rootTwoVC.tabBarItem = customTabBarItemTwo
-        rootThreeVC.tabBarItem = customTabBarItemThree
-        
-        return tabBarController
+        return tabVC
     }
     
 }
 
 // MARK: View Controller Handling
 
-extension AppController {
+extension IBAppController {
     
     fileprivate func addInitialActing(viewController: UIViewController) {
         

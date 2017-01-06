@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Main
 
-class ToViewController: UIViewController {
+class IBToViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +25,12 @@ class ToViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         
     }
-
+    
 }
 
 // MARK: Configure View
 
-extension ToViewController {
+extension IBToViewController {
     
     fileprivate func configImageView() {
         

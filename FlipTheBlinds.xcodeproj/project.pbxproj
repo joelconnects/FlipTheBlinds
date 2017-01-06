@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		5D9EA0D01E1C80BD00EDC645 /* TabBarRootThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA0CF1E1C80BD00EDC645 /* TabBarRootThreeViewController.swift */; };
 		5D9EA11B1E1DE19600EDC645 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA11A1E1DE19600EDC645 /* AppController.swift */; };
+		5D9EA1201E20000F00EDC645 /* IBFromViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA11F1E20000F00EDC645 /* IBFromViewController.swift */; };
+		5D9EA1221E20002400EDC645 /* IBToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA1211E20002400EDC645 /* IBToViewController.swift */; };
+		5D9EA1261E2002EA00EDC645 /* IBAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA1251E2002EA00EDC645 /* IBAppController.swift */; };
+		5D9EA1291E200E9500EDC645 /* IBNavRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA1281E200E9500EDC645 /* IBNavRootViewController.swift */; };
+		5D9EA12B1E200EAE00EDC645 /* IBNavStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA12A1E200EAE00EDC645 /* IBNavStackViewController.swift */; };
+		5D9EA12E1E20126700EDC645 /* IBTabBarRootOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA12D1E20126700EDC645 /* IBTabBarRootOneViewController.swift */; };
+		5D9EA1301E20127D00EDC645 /* IBTabBarRootTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA12F1E20127D00EDC645 /* IBTabBarRootTwoViewController.swift */; };
+		5D9EA1321E20128C00EDC645 /* IBTabBarRootThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA1311E20128C00EDC645 /* IBTabBarRootThreeViewController.swift */; };
 		5DC7367C1E1B423900FF0EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7367B1E1B423900FF0EC7 /* AppDelegate.swift */; };
 		5DC736811E1B423900FF0EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC7367F1E1B423900FF0EC7 /* Main.storyboard */; };
 		5DC736831E1B423900FF0EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC736821E1B423900FF0EC7 /* Assets.xcassets */; };
@@ -26,6 +34,14 @@
 /* Begin PBXFileReference section */
 		5D9EA0CF1E1C80BD00EDC645 /* TabBarRootThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarRootThreeViewController.swift; sourceTree = "<group>"; };
 		5D9EA11A1E1DE19600EDC645 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		5D9EA11F1E20000F00EDC645 /* IBFromViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBFromViewController.swift; sourceTree = "<group>"; };
+		5D9EA1211E20002400EDC645 /* IBToViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBToViewController.swift; sourceTree = "<group>"; };
+		5D9EA1251E2002EA00EDC645 /* IBAppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBAppController.swift; sourceTree = "<group>"; };
+		5D9EA1281E200E9500EDC645 /* IBNavRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBNavRootViewController.swift; sourceTree = "<group>"; };
+		5D9EA12A1E200EAE00EDC645 /* IBNavStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBNavStackViewController.swift; sourceTree = "<group>"; };
+		5D9EA12D1E20126700EDC645 /* IBTabBarRootOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBTabBarRootOneViewController.swift; sourceTree = "<group>"; };
+		5D9EA12F1E20127D00EDC645 /* IBTabBarRootTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBTabBarRootTwoViewController.swift; sourceTree = "<group>"; };
+		5D9EA1311E20128C00EDC645 /* IBTabBarRootThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBTabBarRootThreeViewController.swift; sourceTree = "<group>"; };
 		5DC736781E1B423900FF0EC7 /* FlipTheBlinds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipTheBlinds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC7367B1E1B423900FF0EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC736801E1B423900FF0EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,12 +72,61 @@
 		5D9EA11C1E1F71E200EDC645 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				5D9EA11D1E1FFEDF00EDC645 /* Programmatic */,
+				5D9EA11E1E1FFF4600EDC645 /* Interface Builder */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
+		5D9EA11D1E1FFEDF00EDC645 /* Programmatic */ = {
+			isa = PBXGroup;
+			children = (
 				5D9EA11A1E1DE19600EDC645 /* AppController.swift */,
 				5DC7369B1E1B429F00FF0EC7 /* Modal */,
 				5DC7369C1E1B42B600FF0EC7 /* Nav */,
 				5DC7369E1E1B5EF900FF0EC7 /* Tab */,
 			);
-			name = Demo;
+			name = Programmatic;
+			sourceTree = "<group>";
+		};
+		5D9EA11E1E1FFF4600EDC645 /* Interface Builder */ = {
+			isa = PBXGroup;
+			children = (
+				5D9EA1251E2002EA00EDC645 /* IBAppController.swift */,
+				5DC7367F1E1B423900FF0EC7 /* Main.storyboard */,
+				5D9EA1271E200E5C00EDC645 /* Modal */,
+				5D9EA12C1E200EBF00EDC645 /* Nav */,
+				5D9EA1331E2012F100EDC645 /* Tab */,
+			);
+			name = "Interface Builder";
+			sourceTree = "<group>";
+		};
+		5D9EA1271E200E5C00EDC645 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				5D9EA11F1E20000F00EDC645 /* IBFromViewController.swift */,
+				5D9EA1211E20002400EDC645 /* IBToViewController.swift */,
+			);
+			name = Modal;
+			sourceTree = "<group>";
+		};
+		5D9EA12C1E200EBF00EDC645 /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+				5D9EA1281E200E9500EDC645 /* IBNavRootViewController.swift */,
+				5D9EA12A1E200EAE00EDC645 /* IBNavStackViewController.swift */,
+			);
+			name = Nav;
+			sourceTree = "<group>";
+		};
+		5D9EA1331E2012F100EDC645 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				5D9EA12D1E20126700EDC645 /* IBTabBarRootOneViewController.swift */,
+				5D9EA12F1E20127D00EDC645 /* IBTabBarRootTwoViewController.swift */,
+				5D9EA1311E20128C00EDC645 /* IBTabBarRootThreeViewController.swift */,
+			);
+			name = Tab;
 			sourceTree = "<group>";
 		};
 		5DC7366F1E1B423900FF0EC7 = {
@@ -85,7 +150,7 @@
 			children = (
 				5D9EA11C1E1F71E200EDC645 /* Demo */,
 				5DC7369D1E1B42CC00FF0EC7 /* Pod */,
-				5DC736AB1E1C3B2800FF0EC7 /* App */,
+				5DC736AB1E1C3B2800FF0EC7 /* Supporting Files */,
 			);
 			path = FlipTheBlinds;
 			sourceTree = "<group>";
@@ -127,24 +192,15 @@
 			name = Tab;
 			sourceTree = "<group>";
 		};
-		5DC736AB1E1C3B2800FF0EC7 /* App */ = {
+		5DC736AB1E1C3B2800FF0EC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				5DC7367B1E1B423900FF0EC7 /* AppDelegate.swift */,
 				5DC736871E1B423900FF0EC7 /* Info.plist */,
 				5DC736821E1B423900FF0EC7 /* Assets.xcassets */,
-				5DC736AC1E1C3B3A00FF0EC7 /* Storyboards */,
-			);
-			name = App;
-			sourceTree = "<group>";
-		};
-		5DC736AC1E1C3B3A00FF0EC7 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				5DC7367F1E1B423900FF0EC7 /* Main.storyboard */,
 				5DC736841E1B423900FF0EC7 /* LaunchScreen.storyboard */,
 			);
-			name = Storyboards;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,15 +277,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DC736941E1B428D00FF0EC7 /* FromViewController.swift in Sources */,
+				5D9EA1291E200E9500EDC645 /* IBNavRootViewController.swift in Sources */,
 				5DC736981E1B428D00FF0EC7 /* FTBAnimationController.swift in Sources */,
+				5D9EA1261E2002EA00EDC645 /* IBAppController.swift in Sources */,
+				5D9EA1221E20002400EDC645 /* IBToViewController.swift in Sources */,
 				5DC736A21E1B5F5B00FF0EC7 /* TabBarRootTwoViewController.swift in Sources */,
+				5D9EA1201E20000F00EDC645 /* IBFromViewController.swift in Sources */,
 				5DC7369A1E1B428D00FF0EC7 /* FTBExtensions.swift in Sources */,
+				5D9EA1301E20127D00EDC645 /* IBTabBarRootTwoViewController.swift in Sources */,
 				5DC7367C1E1B423900FF0EC7 /* AppDelegate.swift in Sources */,
+				5D9EA1321E20128C00EDC645 /* IBTabBarRootThreeViewController.swift in Sources */,
 				5DC736971E1B428D00FF0EC7 /* NavStackViewController.swift in Sources */,
+				5D9EA12E1E20126700EDC645 /* IBTabBarRootOneViewController.swift in Sources */,
 				5DC736961E1B428D00FF0EC7 /* NavRootViewController.swift in Sources */,
 				5DC736A01E1B5F4800FF0EC7 /* TabBarRootOneViewController.swift in Sources */,
 				5DC736951E1B428D00FF0EC7 /* ToViewController.swift in Sources */,
 				5D9EA11B1E1DE19600EDC645 /* AppController.swift in Sources */,
+				5D9EA12B1E200EAE00EDC645 /* IBNavStackViewController.swift in Sources */,
 				5D9EA0D01E1C80BD00EDC645 /* TabBarRootThreeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

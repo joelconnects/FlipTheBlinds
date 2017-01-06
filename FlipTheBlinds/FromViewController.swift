@@ -23,7 +23,10 @@ class FromViewController: UIViewController {
     func buttonTapped(_ sender: UIButton) {
         
         let toViewController = ToViewController()
+        
+        // POD: Set transitioningDelegate
         toViewController.transitioningDelegate = self
+        
         self.present(toViewController, animated: true, completion: nil)
         
     }
@@ -75,7 +78,7 @@ extension FromViewController {
     
 }
 
-// POD: Modal Extension
+// POD: Add Modal Extension
 
 extension FromViewController: UIViewControllerTransitioningDelegate {
     

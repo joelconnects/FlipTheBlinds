@@ -10,21 +10,21 @@ import UIKit
 
 // MARK: Main
 
-class TabBarRootOneViewController: UIViewController {
+class IBTabBarRootOneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configImageView()
         
-        // POD: Set UITabBarControllerDelegate
+        // POD: Set UITabBarController Delegate
         self.tabBarController?.delegate = self
     }
-
+    
 }
 
 // MARK: Configure View
 
-extension TabBarRootOneViewController {
+extension IBTabBarRootOneViewController {
     
     fileprivate func configImageView() {
         
@@ -46,7 +46,7 @@ extension TabBarRootOneViewController {
 
 // POD: Add Tab Extension
 
-extension TabBarRootOneViewController: UITabBarControllerDelegate {
+extension IBTabBarRootOneViewController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         

@@ -10,24 +10,15 @@ import UIKit
 
 // MARK: Main
 
-class NavRootViewController: UIViewController {
+class IBNavRootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configImageView()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Go", style: .plain, target: self, action: #selector(goTapped))
-        
-    }
-    
-    func goTapped() {
-        
-        let navStackViewController = NavStackViewController()
         
         // POD: Set UINavigationControllerDelegate
         self.navigationController?.delegate = self
-        
-        self.navigationController?.pushViewController(navStackViewController, animated: true)
         
     }
     
@@ -35,7 +26,7 @@ class NavRootViewController: UIViewController {
 
 // MARK: Configure View
 
-extension NavRootViewController {
+extension IBNavRootViewController {
     
     fileprivate func configImageView() {
         
@@ -57,7 +48,7 @@ extension NavRootViewController {
 
 // POD: Add Navigtation Extension
 
-extension NavRootViewController: UINavigationControllerDelegate {
+extension IBNavRootViewController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
