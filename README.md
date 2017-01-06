@@ -1,3 +1,12 @@
+[![Platform](http://img.shields.io/badge/platform-ios-blue.svg?style=flat
+)](https://developer.apple.com/iphone/index.action)
+[![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
+)](https://developer.apple.com/swift)
+[![Swift 3.0](https://img.shields.io/badge/Swift-3.x-orange.svg?style=flat
+)](https://developer.apple.com/swift/)
+[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
+)](http://mit-license.org)
+
 # FlipTheBlinds
 
 FlipTheBlinds is an animation transition that creates a venetian blinds domino effect.
