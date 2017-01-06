@@ -45,14 +45,14 @@ class AppController: UIViewController {
         addInitialActing(viewController: actingViewController)
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        print("")
-    }
-    
-    private func configureContainerView() {
+
+}
+
+// MARK: Set Up
+
+extension AppController {
+
+    fileprivate func configureContainerView() {
         
         containerView = UIView()
         containerView.frame = view.bounds
@@ -61,7 +61,7 @@ class AppController: UIViewController {
         
     }
     
-    private func configureMenuView() {
+    fileprivate func configureMenuView() {
         
         menuLayoutView = UIView()
         menuLayoutView.backgroundColor = UIColor.clear
@@ -101,8 +101,6 @@ class AppController: UIViewController {
         menuFillerView.topAnchor.constraint(equalTo: menuView.topAnchor).isActive = true
         menuFillerView.leadingAnchor.constraint(equalTo: menuView.trailingAnchor).isActive = true
         
-        
-        
         let menuStackView = UIStackView()
         menuStackView.axis = .vertical
         menuStackView.alignment = .center
@@ -135,58 +133,8 @@ class AppController: UIViewController {
         }
 
     }
-    
-    func menuButtonTapped(_ sender: UIButton) {
-        
-        guard let titleText = sender.titleLabel?.text else { fatalError() }
-        
-        switch titleText {
-        case DemoType.modal.rawValue:
-            demoType = .modal
-        case DemoType.navigation.rawValue:
-            demoType = .navigation
-        case DemoType.tab.rawValue:
-            demoType = .tab
-        default:
-            break
-        }
-        
-        switchToViewController(withDemoType: demoType)
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(menuSwiped(_:)))
-        swipeRight.direction = .right
-        menuSwiped(swipeRight)
-        
-    }
-    
-    private func switchToViewController(withDemoType type: DemoType) {
 
-        let exitingViewController = actingViewController
-        exitingViewController?.willMove(toParentViewController: nil)
-
-        actingViewController = generateViewController(forType: type)
-        self.addChildViewController(actingViewController)
-
-        containerView.addSubview(actingViewController.view)
-        actingViewController.view.frame = containerView.bounds
-        actingViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        actingViewController.view.alpha = 0
-
-        UIView.animate(withDuration: 0.3, animations: {
-
-            self.actingViewController.view.alpha = 1
-            exitingViewController?.view.alpha = 0
-
-        }) { completed in
-            exitingViewController?.view.removeFromSuperview()
-            exitingViewController?.removeFromParentViewController()
-            self.actingViewController.didMove(toParentViewController: self)
-        }
-        
-    }
-    
-    private func configureMenuButton() {
+    fileprivate func configureMenuButton() {
         
         menuButton = UIImageView()
         menuButton.image = #imageLiteral(resourceName: "menuButton")
@@ -210,6 +158,12 @@ class AppController: UIViewController {
         menuButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
     }
+    
+}
+
+// MARK: Actions
+
+extension AppController {
     
     func menuSwiped(_ sender: UISwipeGestureRecognizer) {
         
@@ -249,7 +203,7 @@ class AppController: UIViewController {
         self.menuLayoutConstraint = self.menuLayoutView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: multiplier)
         self.menuLayoutConstraint.isActive = true
         
-        UIView.animate(withDuration: 0.3) { 
+        UIView.animate(withDuration: 0.3) {
             self.blurEffectView?.effect = blurEffect
         }
         
@@ -267,7 +221,36 @@ class AppController: UIViewController {
         
     }
     
-    private func generateViewController(forType type: DemoType) -> UIViewController {
+    func menuButtonTapped(_ sender: UIButton) {
+        
+        guard let titleText = sender.titleLabel?.text else { fatalError() }
+        
+        switch titleText {
+        case DemoType.modal.rawValue:
+            demoType = .modal
+        case DemoType.navigation.rawValue:
+            demoType = .navigation
+        case DemoType.tab.rawValue:
+            demoType = .tab
+        default:
+            break
+        }
+        
+        switchToViewController(withDemoType: demoType)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(menuSwiped(_:)))
+        swipeRight.direction = .right
+        menuSwiped(swipeRight)
+        
+    }
+    
+}
+
+// MARK: View Controller Generation
+
+extension AppController {
+    
+    fileprivate func generateViewController(forType type: DemoType) -> UIViewController {
         
         switch type {
         case .modal:
@@ -277,21 +260,21 @@ class AppController: UIViewController {
         case .tab:
             return generateTabBarController()
         }
-    
+        
     }
     
-    private func generateTabBarController() -> UITabBarController {
+    fileprivate func generateTabBarController() -> UITabBarController {
         
         let tabBarController = UITabBarController()
         let rootOneVC = TabBarRootOneViewController()
         let rootTwoVC = TabBarRootTwoViewController()
         let rootThreeVC = TabBarRootThreeViewController()
         tabBarController.setViewControllers([rootOneVC, rootTwoVC, rootThreeVC], animated: true)
-
+        
         let customTabBarItemOne = UITabBarItem(title: "RED", image: #imageLiteral(resourceName: "redTab").withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "tabSelected"))
         let customTabBarItemTwo = UITabBarItem(title: "GREEN", image: #imageLiteral(resourceName: "greenTab").withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "tabSelected"))
         let customTabBarItemThree = UITabBarItem(title: "BLUE", image: #imageLiteral(resourceName: "blueTab").withRenderingMode(UIImageRenderingMode.alwaysOriginal), selectedImage: #imageLiteral(resourceName: "tabSelected"))
-
+        
         rootOneVC.tabBarItem = customTabBarItemOne
         rootTwoVC.tabBarItem = customTabBarItemTwo
         rootThreeVC.tabBarItem = customTabBarItemThree
@@ -299,7 +282,13 @@ class AppController: UIViewController {
         return tabBarController
     }
     
-    private func addInitialActing(viewController: UIViewController) {
+}
+
+// MARK: View Controller Handling
+
+extension AppController {
+    
+    fileprivate func addInitialActing(viewController: UIViewController) {
         
         self.addChildViewController(viewController)
         containerView.addSubview(viewController.view)
@@ -308,8 +297,36 @@ class AppController: UIViewController {
         viewController.didMove(toParentViewController: self)
         
     }
-
+    
+    fileprivate func switchToViewController(withDemoType type: DemoType) {
+        
+        let exitingViewController = actingViewController
+        exitingViewController?.willMove(toParentViewController: nil)
+        
+        actingViewController = generateViewController(forType: type)
+        self.addChildViewController(actingViewController)
+        
+        containerView.addSubview(actingViewController.view)
+        actingViewController.view.frame = containerView.bounds
+        actingViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        actingViewController.view.alpha = 0
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            
+            self.actingViewController.view.alpha = 1
+            exitingViewController?.view.alpha = 0
+            
+        }) { completed in
+            exitingViewController?.view.removeFromSuperview()
+            exitingViewController?.removeFromParentViewController()
+            self.actingViewController.didMove(toParentViewController: self)
+        }
+        
+    }
+    
 }
+
 
 
 

@@ -53,6 +53,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D9EA11C1E1F71E200EDC645 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				5D9EA11A1E1DE19600EDC645 /* AppController.swift */,
+				5DC7369B1E1B429F00FF0EC7 /* Modal */,
+				5DC7369C1E1B42B600FF0EC7 /* Nav */,
+				5DC7369E1E1B5EF900FF0EC7 /* Tab */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
 		5DC7366F1E1B423900FF0EC7 = {
 			isa = PBXGroup;
 			children = (
@@ -72,33 +83,29 @@
 		5DC7367A1E1B423900FF0EC7 /* FlipTheBlinds */ = {
 			isa = PBXGroup;
 			children = (
-				5DC736AB1E1C3B2800FF0EC7 /* App */,
-				5DC7369B1E1B429F00FF0EC7 /* ModalTransitionDemo */,
-				5DC7369C1E1B42B600FF0EC7 /* NavTransitionDemo */,
-				5DC7369E1E1B5EF900FF0EC7 /* TabTransitionDemo */,
+				5D9EA11C1E1F71E200EDC645 /* Demo */,
 				5DC7369D1E1B42CC00FF0EC7 /* Pod */,
-				5DC736821E1B423900FF0EC7 /* Assets.xcassets */,
-				5DC736AC1E1C3B3A00FF0EC7 /* Interface Builder */,
+				5DC736AB1E1C3B2800FF0EC7 /* App */,
 			);
 			path = FlipTheBlinds;
 			sourceTree = "<group>";
 		};
-		5DC7369B1E1B429F00FF0EC7 /* ModalTransitionDemo */ = {
+		5DC7369B1E1B429F00FF0EC7 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
 				5DC7368D1E1B428D00FF0EC7 /* FromViewController.swift */,
 				5DC7368E1E1B428D00FF0EC7 /* ToViewController.swift */,
 			);
-			name = ModalTransitionDemo;
+			name = Modal;
 			sourceTree = "<group>";
 		};
-		5DC7369C1E1B42B600FF0EC7 /* NavTransitionDemo */ = {
+		5DC7369C1E1B42B600FF0EC7 /* Nav */ = {
 			isa = PBXGroup;
 			children = (
 				5DC7368F1E1B428D00FF0EC7 /* NavRootViewController.swift */,
 				5DC736901E1B428D00FF0EC7 /* NavStackViewController.swift */,
 			);
-			name = NavTransitionDemo;
+			name = Nav;
 			sourceTree = "<group>";
 		};
 		5DC7369D1E1B42CC00FF0EC7 /* Pod */ = {
@@ -110,33 +117,34 @@
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		5DC7369E1E1B5EF900FF0EC7 /* TabTransitionDemo */ = {
+		5DC7369E1E1B5EF900FF0EC7 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
 				5DC7369F1E1B5F4800FF0EC7 /* TabBarRootOneViewController.swift */,
 				5DC736A11E1B5F5B00FF0EC7 /* TabBarRootTwoViewController.swift */,
 				5D9EA0CF1E1C80BD00EDC645 /* TabBarRootThreeViewController.swift */,
 			);
-			name = TabTransitionDemo;
+			name = Tab;
 			sourceTree = "<group>";
 		};
 		5DC736AB1E1C3B2800FF0EC7 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				5DC7367B1E1B423900FF0EC7 /* AppDelegate.swift */,
-				5D9EA11A1E1DE19600EDC645 /* AppController.swift */,
 				5DC736871E1B423900FF0EC7 /* Info.plist */,
+				5DC736821E1B423900FF0EC7 /* Assets.xcassets */,
+				5DC736AC1E1C3B3A00FF0EC7 /* Storyboards */,
 			);
 			name = App;
 			sourceTree = "<group>";
 		};
-		5DC736AC1E1C3B3A00FF0EC7 /* Interface Builder */ = {
+		5DC736AC1E1C3B3A00FF0EC7 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				5DC7367F1E1B423900FF0EC7 /* Main.storyboard */,
 				5DC736841E1B423900FF0EC7 /* LaunchScreen.storyboard */,
 			);
-			name = "Interface Builder";
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
