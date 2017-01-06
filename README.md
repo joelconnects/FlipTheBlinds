@@ -22,10 +22,11 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
 
 ## Usage
 
- * **Modal Presentations**
-  * Assign the `transitioningDelegate` of the view controller being presented to the presenting view controller.
+### Modal Presentations
+
+  * Assign the `transitioningDelegate` property of the view controller being presented to the presenting view controller.
   * Add an extension to the presenting view controller that includes methods for the `UIViewControllerTransitioningDelegate`.
-  * Return instances of the `FTBAnimationController(displayType:direction:speed:)` animator object for presenting and dismissing.
+  * Return instances of the `FTBAnimationController` animator object using `FTBAnimationController(displayType:direction:speed:)` for presenting and dismissing.
 
 ```swift
 
@@ -70,14 +71,15 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
   }
 ```
 
- * **Navigation**
-  * Assign the `delegate` of the navigation controller to the root view controller.
+### Navigation
+
+  * Assign the `delegate` property of the navigation controller to the root view controller.
   * Add an extension to the root view controller that includes the `UINavigationControllerDelegate` and necessary transitioning method.
-  * Return instances of the `FTBAnimationController(displayType:direction:speed:)` animator object for push and pop.
+  * Return instances of the `FTBAnimationController` animator object using `FTBAnimationController(displayType:direction:speed:)` for push and pop.
 
 ```swift
 
-  // MARK: Programmatic option
+  // MARK: Push
 
   func pushAction() {
 
@@ -87,7 +89,7 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
 
   }
 
-  // MARK: Transitioning Delegate
+  // MARK: Navigation Controller Delegate
 
   extension NavRootViewController: UINavigationControllerDelegate {
 
@@ -107,6 +109,35 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
   }
 ```
 
+### Tab Bar
+
+  * Assign the `delegate` property of the tab bar controller to one of the root view controllers of the tab bar controller.
+  * Add an extension to a root view controller that includes the `UITabBarControllerDelegate` and necessary transitioning method.
+  * Return an instance of the `FTBAnimationController` animator object using `FTBAnimationController(displayType:direction:speed:)`.
+
+```swift
+
+  // MARK: Delegate
+
+  override func viewDidLoad() {
+      super.viewDidLoad()
+
+      self.tabBarController?.delegate = self
+
+  }
+
+  // MARK: Tab Bar Controller Delegate
+
+  extension TabBarRootOneViewController: UITabBarControllerDelegate {
+
+      func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+          return FTBAnimationController(displayType: .tabSelected, direction: .down, speed: .moderate)
+
+      }
+
+  }
+```
 
 ## Known Issues
 
