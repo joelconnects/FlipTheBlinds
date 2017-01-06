@@ -24,7 +24,7 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
 
  * **Modal Presentations**
   * Assign the `transitioningDelegate` of the view controller being presented to the presenting view controller.
-  * Add an extension to the presenting view controller that includes adherence and methods for the `UIViewControllerTransitioningDelegate`.
+  * Add an extension to the presenting view controller that includes methods for the `UIViewControllerTransitioningDelegate`.
   * Return instances of the `FTBAnimationController(displayType:direction:speed:)` animator object for presenting and dismissing.
 
 ```swift
@@ -103,7 +103,7 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
        }
 
    }
-   
+
   }
 ```
 
