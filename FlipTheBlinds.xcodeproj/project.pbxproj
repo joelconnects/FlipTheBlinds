@@ -235,7 +235,6 @@
 				TargetAttributes = {
 					5DC736771E1B423900FF0EC7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = KHZ7KMZGFR;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -415,7 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KHZ7KMZGFR;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FlipTheBlinds/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -429,7 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KHZ7KMZGFR;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FlipTheBlinds/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
