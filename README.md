@@ -30,6 +30,12 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
 
 ## Usage
 
+### Installation
+
+```
+  pod "FlipTheBlinds"
+```
+
 ### Modal Presentations
 
   * Assign the `transitioningDelegate` property of the view controller being presented to the presenting view controller.
