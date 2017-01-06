@@ -8,8 +8,9 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
 
  * Animation transition for use in presentations, navigation, and switching between tabs.
  * Modal presentations can be programmatic or implemented using segues.
- * Transition direction and speed can be manipulated.
+ * Transition direction and speed is customizable.
  * Designed for portrait device orientation.
+ * Swift 3.0
 
 ## Demo
 
