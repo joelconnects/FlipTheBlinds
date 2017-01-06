@@ -27,36 +27,36 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
   * Add an extension to the presenting view controller that includes adherence and methods for the `UIViewControllerTransitioningDelegate`.
   * Return an instance of the `FTBAnimationController(displayType:direction:speed:)` animator object.
 
-  ```swift
+```swift
 
-    // MARK: Action Method
+  // MARK: Action Method
 
-    func actionTaken() {
+  func actionTaken() {
 
-      let toViewController = ToViewController()
-      toViewController.transitioningDelegate = self
-      self.present(toViewController, animated: true, completion: nil)
+    let toViewController = ToViewController()
+    toViewController.transitioningDelegate = self
+    self.present(toViewController, animated: true, completion: nil)
+
+  }
+
+  // MARK: Transitioning Delegate
+
+  extension fromViewController: UIViewControllerTransitioningDelegate {
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        return FTBAnimationController(displayType: .present, direction: .up, speed: .moderate)
+
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        return FTBAnimationController(displayType: .dismiss, direction: .down, speed: .moderate)
 
     }
 
-    // MARK: Transitioning Delegate
-
-    extension fromViewController: UIViewControllerTransitioningDelegate {
-
-      func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-          return FTBAnimationController(displayType: .present, direction: .up, speed: .moderate)
-
-      }
-
-      func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-          return FTBAnimationController(displayType: .dismiss, direction: .down, speed: .moderate)
-
-      }
-
-    }
-  ```
+  }
+```
 
 
 ## Known Issues
