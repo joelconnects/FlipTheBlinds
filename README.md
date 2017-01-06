@@ -1,7 +1,5 @@
 # FlipTheBlinds
 
-## Description
-
 FlipTheBlinds is an animation transition that creates a venetian blinds domino effect.
 
 ## Features
