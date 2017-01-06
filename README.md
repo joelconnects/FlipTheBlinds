@@ -142,7 +142,7 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
 ## Known Issues
 
  * Drawing/Rendering images in the animator object is problematic for the simulator, especially iPhone 7/7P. Device testing is recommended.
- * `drawHierarchy(in:afterScreenUpdates:)` is used for modal presentations. Waiting for the screen to update may cause an inconspicuous flicker.   
+ * `drawHierarchy(in:afterScreenUpdates:)` is used for modal presentations and may cause an inconspicuous flicker.   
 
 ## License
 
