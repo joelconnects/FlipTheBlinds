@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5D9EA0D01E1C80BD00EDC645 /* TabBarRootThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA0CF1E1C80BD00EDC645 /* TabBarRootThreeViewController.swift */; };
+		5D9EA11B1E1DE19600EDC645 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA11A1E1DE19600EDC645 /* AppController.swift */; };
 		5DC7367C1E1B423900FF0EC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7367B1E1B423900FF0EC7 /* AppDelegate.swift */; };
 		5DC736811E1B423900FF0EC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC7367F1E1B423900FF0EC7 /* Main.storyboard */; };
 		5DC736831E1B423900FF0EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC736821E1B423900FF0EC7 /* Assets.xcassets */; };
@@ -17,17 +18,14 @@
 		5DC736961E1B428D00FF0EC7 /* NavRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7368F1E1B428D00FF0EC7 /* NavRootViewController.swift */; };
 		5DC736971E1B428D00FF0EC7 /* NavStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC736901E1B428D00FF0EC7 /* NavStackViewController.swift */; };
 		5DC736981E1B428D00FF0EC7 /* FTBAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC736911E1B428D00FF0EC7 /* FTBAnimationController.swift */; };
-		5DC736991E1B428D00FF0EC7 /* FTBFromViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC736921E1B428D00FF0EC7 /* FTBFromViewController.swift */; };
 		5DC7369A1E1B428D00FF0EC7 /* FTBExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC736931E1B428D00FF0EC7 /* FTBExtensions.swift */; };
 		5DC736A01E1B5F4800FF0EC7 /* TabBarRootOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC7369F1E1B5F4800FF0EC7 /* TabBarRootOneViewController.swift */; };
 		5DC736A21E1B5F5B00FF0EC7 /* TabBarRootTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC736A11E1B5F5B00FF0EC7 /* TabBarRootTwoViewController.swift */; };
-		5DC736A41E1B684400FF0EC7 /* FTBTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC736A31E1B684400FF0EC7 /* FTBTabBarController.swift */; };
-		5DC736A61E1B6F8300FF0EC7 /* FTBNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC736A51E1B6F8300FF0EC7 /* FTBNavigationController.swift */; };
-		5DC736A81E1B728600FF0EC7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC736A71E1B728600FF0EC7 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5D9EA0CF1E1C80BD00EDC645 /* TabBarRootThreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarRootThreeViewController.swift; sourceTree = "<group>"; };
+		5D9EA11A1E1DE19600EDC645 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		5DC736781E1B423900FF0EC7 /* FlipTheBlinds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipTheBlinds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC7367B1E1B423900FF0EC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC736801E1B423900FF0EC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -39,13 +37,9 @@
 		5DC7368F1E1B428D00FF0EC7 /* NavRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavRootViewController.swift; sourceTree = "<group>"; };
 		5DC736901E1B428D00FF0EC7 /* NavStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavStackViewController.swift; sourceTree = "<group>"; };
 		5DC736911E1B428D00FF0EC7 /* FTBAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTBAnimationController.swift; sourceTree = "<group>"; };
-		5DC736921E1B428D00FF0EC7 /* FTBFromViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTBFromViewController.swift; sourceTree = "<group>"; };
 		5DC736931E1B428D00FF0EC7 /* FTBExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTBExtensions.swift; sourceTree = "<group>"; };
 		5DC7369F1E1B5F4800FF0EC7 /* TabBarRootOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarRootOneViewController.swift; sourceTree = "<group>"; };
 		5DC736A11E1B5F5B00FF0EC7 /* TabBarRootTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarRootTwoViewController.swift; sourceTree = "<group>"; };
-		5DC736A31E1B684400FF0EC7 /* FTBTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTBTabBarController.swift; sourceTree = "<group>"; };
-		5DC736A51E1B6F8300FF0EC7 /* FTBNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTBNavigationController.swift; sourceTree = "<group>"; };
-		5DC736A71E1B728600FF0EC7 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,9 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				5DC736911E1B428D00FF0EC7 /* FTBAnimationController.swift */,
-				5DC736921E1B428D00FF0EC7 /* FTBFromViewController.swift */,
-				5DC736A51E1B6F8300FF0EC7 /* FTBNavigationController.swift */,
-				5DC736A31E1B684400FF0EC7 /* FTBTabBarController.swift */,
 				5DC736931E1B428D00FF0EC7 /* FTBExtensions.swift */,
 			);
 			name = Pod;
@@ -122,7 +113,6 @@
 		5DC7369E1E1B5EF900FF0EC7 /* TabTransitionDemo */ = {
 			isa = PBXGroup;
 			children = (
-				5DC736A71E1B728600FF0EC7 /* TabBarController.swift */,
 				5DC7369F1E1B5F4800FF0EC7 /* TabBarRootOneViewController.swift */,
 				5DC736A11E1B5F5B00FF0EC7 /* TabBarRootTwoViewController.swift */,
 				5D9EA0CF1E1C80BD00EDC645 /* TabBarRootThreeViewController.swift */,
@@ -134,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				5DC7367B1E1B423900FF0EC7 /* AppDelegate.swift */,
+				5D9EA11A1E1DE19600EDC645 /* AppController.swift */,
 				5DC736871E1B423900FF0EC7 /* Info.plist */,
 			);
 			name = App;
@@ -221,19 +212,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DC736A61E1B6F8300FF0EC7 /* FTBNavigationController.swift in Sources */,
 				5DC736941E1B428D00FF0EC7 /* FromViewController.swift in Sources */,
-				5DC736991E1B428D00FF0EC7 /* FTBFromViewController.swift in Sources */,
-				5DC736A41E1B684400FF0EC7 /* FTBTabBarController.swift in Sources */,
 				5DC736981E1B428D00FF0EC7 /* FTBAnimationController.swift in Sources */,
 				5DC736A21E1B5F5B00FF0EC7 /* TabBarRootTwoViewController.swift in Sources */,
 				5DC7369A1E1B428D00FF0EC7 /* FTBExtensions.swift in Sources */,
 				5DC7367C1E1B423900FF0EC7 /* AppDelegate.swift in Sources */,
 				5DC736971E1B428D00FF0EC7 /* NavStackViewController.swift in Sources */,
 				5DC736961E1B428D00FF0EC7 /* NavRootViewController.swift in Sources */,
-				5DC736A81E1B728600FF0EC7 /* TabBarController.swift in Sources */,
 				5DC736A01E1B5F4800FF0EC7 /* TabBarRootOneViewController.swift in Sources */,
 				5DC736951E1B428D00FF0EC7 /* ToViewController.swift in Sources */,
+				5D9EA11B1E1DE19600EDC645 /* AppController.swift in Sources */,
 				5D9EA0D01E1C80BD00EDC645 /* TabBarRootThreeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

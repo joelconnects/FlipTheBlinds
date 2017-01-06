@@ -10,17 +10,11 @@ import UIKit
 
 // MARK: Main
 
-class FTBAnimationController: NSObject {
+public class FTBAnimationController: NSObject {
     
-    typealias Settings = (direction: Direction, speed: Speed)
-    
-    fileprivate var fromSettings: Settings
-    fileprivate var toSettings: Settings
-    fileprivate var settings: Settings
-    
-    fileprivate var isFromTab: Bool?
-    
-    fileprivate var delayIntervals = [Int]()
+    fileprivate let displayType: DisplayType
+    fileprivate let settings: (direction: Direction, speed: Speed)
+    fileprivate let sliceType: FTBSliceType
     
     fileprivate var slices: Int {
         switch settings.direction {
@@ -40,34 +34,36 @@ class FTBAnimationController: NSObject {
         }
     }
     
-    var displayType: DisplayType = .none {
-        didSet {
-            switch displayType {
-            case .dismiss:
-                settings = toSettings
-            case .pop:
-                settings = toSettings
-            case .present:
-                settings = fromSettings
-            case .push:
-                settings = fromSettings
-            case .tabSelected:
-                if isFromTab == false {
-                    settings = toSettings
-                    isFromTab = true
-                } else {
-                    settings = fromSettings
-                    isFromTab = false
-                }
-            default:
-                break
-            }
-        }
+    fileprivate var delay: Double {
+        return settings.speed.rawValue * delayMultiplier
     }
+    
+    fileprivate var intervalDuration: Double {
+        let durationIntervals = 4.0
+        return (((Double(slices)-1) * delay) - settings.speed.rawValue) / -durationIntervals
+    }
+
+    init(displayType: DisplayType, direction: Direction, speed: Speed) {
+        
+        self.displayType = displayType
+        self.settings = (direction, speed)
+        switch direction {
+        case .up, .down:
+            self.sliceType = .horizontal
+        case .left, .right:
+            self.sliceType = .vertical
+        }
+        
+    }
+    
+}
+
+// MARK: Transition Settings
+
+extension FTBAnimationController {
     
     enum DisplayType {
         case dismiss
-        case none
         case pop
         case push
         case present
@@ -87,171 +83,100 @@ class FTBAnimationController: NSObject {
         case slow = 2.0
     }
     
-    override init() {
-        
-        fromSettings = (.up, .moderate)
-        toSettings = (.down, .moderate)
-        settings = fromSettings
-    }
-    
-}
-
-// MARK: Transition Settings
-
-extension FTBAnimationController {
-    
-    func setFromTransition(direction: Direction, speed: Speed) {
-        fromSettings = (direction, speed)
-    }
-    
-    func setToTransition(direction: Direction, speed: Speed) {
-        toSettings = (direction, speed)
-    }
-    
-    func setPushTransition(direction: Direction, speed: Speed) {
-        fromSettings = (direction, speed)
-    }
-    
-    func setPopTransition(direction: Direction, speed: Speed) {
-        toSettings = (direction, speed)
-    }
-    
 }
 
 // MARK: Transitioning Delegate
 
 extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         
         return settings.speed.rawValue
         
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         guard
             let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
             let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)
             else {return}
         
-        var fromImage = UIImage()
-        
-        switch displayType {
-        case .present, .dismiss, .tabSelected:
-            fromImage = fromVC.view.drawImage()
-        case .pop, .push:
-            fromImage = fromVC.view.renderImage()
-        default:
-            break
-        }
-        
         let containerView = transitionContext.containerView
+        let animationView = generateAnimationView(forContainerView: containerView)
+        
         containerView.addSubview(toVC.view)
+        containerView.addSubview(animationView)
         
-        let backgroundView = UIView(frame: containerView.frame)
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
-        containerView.addSubview(backgroundView)
-        
-        let duration = transitionDuration(using: transitionContext)
-        let delay = duration * delayMultiplier
-        let durationIntervals = 4.0
-        let intervalDuration = (((Double(slices)-1) * delay) - duration) / -durationIntervals
-        
-        var toImage = UIImage()
-        
-        switch displayType {
-        case .present, .dismiss, .tabSelected:
-            toImage = toVC.view.drawImage()
-        case .pop, .push:
-            toImage = toVC.view.renderImage()
-        default:
-            break
-        }
+        let fromImages = generateImage(ofView: fromVC.view).generateImage(slices: slices, type: sliceType)
+        let toImages = generateImage(ofView: toVC.view).generateImage(slices: slices, type: sliceType)
         
         toVC.view.isHidden = true
         
-        var fromImages = [UIImage]()
-        var toImages = [UIImage]()
+        addContentViews(toAnimationView: animationView, fromImages: fromImages, toImages: toImages)
         
-        switch settings.direction {
-        case .up, .down:
+        animate(animationView: animationView) { 
             
-            fromImages = fromImage.generateImage(slices: slices, type: .horizontal)
-            toImages = toImage.generateImage(slices: slices, type: .horizontal)
-            
-            var yOrigin: CGFloat = 0
-            for index in 0..<slices {
-                
-                delayIntervals.append(index)
-                
-                let sliceSize = CGSize(width: containerView.bounds.width, height: containerView.bounds.height/CGFloat(slices))
-                let contentView = ContentView(frame: CGRect(x: 0, y: yOrigin, width: sliceSize.width, height: sliceSize.height))
-                yOrigin += sliceSize.height
-                
-                contentView.fromView.image = fromImages[index]
-                contentView.toView.image = UIImage(cgImage: toImages[index].cgImage!, scale: 1.0, orientation: .downMirrored)
-                contentView.toView.transform = CGAffineTransform(scaleX: 0.93, y: 0.93)
-                backgroundView.addSubview(contentView)
-                
-            }
-            
-        case .left, .right:
-            
-            fromImages = fromImage.generateImage(slices: slices, type: .vertical)
-            toImages = toImage.generateImage(slices: slices, type: .vertical)
-            
-            var xOrigin: CGFloat = 0
-            for index in 0..<slices {
-                
-                delayIntervals.append(index)
-                
-                let sliceSize = CGSize(width: containerView.bounds.width/CGFloat(slices), height: containerView.bounds.height)
-                let contentView = ContentView(frame: CGRect(x: xOrigin, y: 0, width: sliceSize.width, height: sliceSize.height))
-                xOrigin += sliceSize.width
-                
-                contentView.fromView.image = fromImages[index]
-                contentView.toView.image = UIImage(cgImage: toImages[index].cgImage!, scale: 1.0, orientation: .upMirrored)
-                contentView.toView.transform = CGAffineTransform(scaleX: 0.93, y: 0.93)
-                backgroundView.addSubview(contentView)
-                
-            }
+            toVC.view.isHidden = false
+            animationView.removeFromSuperview()
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
             
         }
         
-        switch settings.direction {
-        case .up, .left:
+    }
+    
+}
+
+// MARK: Transition Formation
+
+extension FTBAnimationController {
+    
+    fileprivate func generateImage(ofView view: UIView) -> UIImage {
+        
+        var image = UIImage()
+        switch displayType {
+        case .present, .dismiss:
+            image = view.drawImage()
+        case .pop, .push, .tabSelected:
+            image = view.renderImage()
+        }
+        return image
+        
+    }
+    
+    fileprivate func generateAnimationView(forContainerView view: UIView) -> UIView {
+        
+        let backgroundView = UIView(frame: view.frame)
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        
+        return backgroundView
+    }
+    
+    fileprivate func addContentViews(toAnimationView view: UIView, fromImages: [UIImage], toImages: [UIImage]) {
+        
+        var size: CGSize
+        var point: CGPoint
+        var orientation: UIImageOrientation
+        
+        for index in 0..<slices {
             
-            for index in stride(from: (slices - 1), through: 0, by: -1) {
-                
-                let delayInterval = delayIntervals.removeFirst()
-                let animationDelay = delay * Double(delayInterval)
-                
-                animate(contentView: backgroundView.subviews[index] as! ContentView, intervalDuration: intervalDuration, delay: animationDelay, completion: {
-                    if index == 0 {
-                        toVC.view.isHidden = false
-                        backgroundView.removeFromSuperview()
-                        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                    }
-                })
+            switch settings.direction {
+            case .up, .down:
+                size = CGSize(width: view.bounds.width, height: view.bounds.height/CGFloat(slices))
+                point = CGPoint(x: 0, y: CGFloat(index)*size.height)
+                orientation = .downMirrored
+            case .left, .right:
+                size = CGSize(width: view.bounds.width/CGFloat(slices), height: view.bounds.height)
+                point = CGPoint(x: CGFloat(index)*size.width, y: 0)
+                orientation = .upMirrored
             }
             
-        case .down, .right:
+            let contentView = ContentView(frame: CGRect(x: point.x, y: point.y, width: size.width, height: size.height))
+            contentView.fromView.image = fromImages[index]
+            contentView.toView.image = UIImage(cgImage: toImages[index].cgImage!, scale: 1.0, orientation: orientation)
+            contentView.toView.transform = CGAffineTransform(scaleX: 0.93, y: 0.93)
+            view.addSubview(contentView)
             
-            for index in 0..<slices {
-                
-                let delayInterval = delayIntervals.removeFirst()
-                let animationDelay = delay * Double(delayInterval)
-                
-                animate(contentView: backgroundView.subviews[index] as! ContentView, intervalDuration: intervalDuration, delay: animationDelay, completion: {
-                    if index == (self.slices - 1) {
-                        toVC.view.isHidden = false
-                        backgroundView.removeFromSuperview()
-                        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                    }
-                })
-                
-            }
         }
         
     }
@@ -261,6 +186,33 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
 // MARK: Animation
 
 extension FTBAnimationController {
+    
+    fileprivate func animate(animationView: UIView, completion: @escaping ()->()) {
+        
+        var delayIntervals = [Int](0..<slices)
+        var intervals: [Int]
+        
+        switch settings.direction {
+        case .up, .left:
+            intervals = [Int]((0..<slices).reversed())
+        case .down, .right:
+            intervals = [Int](0..<slices)
+        }
+        
+        for index in intervals {
+            
+            let delayInterval = delayIntervals.removeFirst()
+            let animationDelay = delay * Double(delayInterval)
+            let isLastInterval: Bool = index == intervals.last!
+            
+            animate(contentView: animationView.subviews[index] as! ContentView, intervalDuration: intervalDuration, delay: animationDelay, completion: {
+                if isLastInterval{
+                    completion()
+                }
+            })
+        }
+        
+    }
     
     fileprivate func animate(contentView: ContentView, intervalDuration duration: TimeInterval, delay: TimeInterval, completion: @escaping ()->()) {
         

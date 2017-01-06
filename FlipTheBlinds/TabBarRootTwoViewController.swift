@@ -14,9 +14,7 @@ class TabBarRootTwoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configImageView()
-        
     }
 }
 
@@ -28,7 +26,7 @@ extension TabBarRootTwoViewController {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "dracula")
+        imageView.image = #imageLiteral(resourceName: "greenImage")
         
         view.addSubview(imageView)
         

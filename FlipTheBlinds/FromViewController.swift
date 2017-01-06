@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Main
 
-class FromViewController: FTBFromViewController {
+class FromViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ extension FromViewController {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "gomez")
+        imageView.image = #imageLiteral(resourceName: "treeGlobeImage")
         
         view.addSubview(imageView)
         
@@ -62,6 +62,7 @@ extension FromViewController {
         let buttonYorigin = screenHeight - buttonSize - buttonYconstant
         
         let button = UIButton(type: .custom)
+        button.alpha = 0.7
         button.backgroundColor = UIColor.black
         button.setTitleColor(UIColor.white, for: UIControlState())
         button.setTitle("GO", for: UIControlState())
@@ -73,4 +74,24 @@ extension FromViewController {
     }
     
 }
+
+// POD: Modal Extension
+
+extension FromViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return FTBAnimationController(displayType: .present, direction: .up, speed: .moderate)
+        
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return FTBAnimationController(displayType: .dismiss, direction: .down, speed: .moderate)
+        
+    }
+    
+}
+
+
 

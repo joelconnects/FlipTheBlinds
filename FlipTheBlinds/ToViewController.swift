@@ -36,7 +36,7 @@ extension ToViewController {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "dracula")
+        imageView.image = #imageLiteral(resourceName: "treeImage")
         
         view.addSubview(imageView)
         
@@ -60,6 +60,7 @@ extension ToViewController {
         let buttonYorigin = screenHeight - buttonSize - buttonYconstant
         
         let button = UIButton()
+        button.alpha = 0.8
         button.backgroundColor = UIColor.black
         button.setTitleColor(UIColor.white, for: UIControlState())
         button.setTitle("BACK", for: UIControlState())

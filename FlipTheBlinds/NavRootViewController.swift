@@ -16,14 +16,16 @@ class NavRootViewController: UIViewController {
         super.viewDidLoad()
         
         configImageView()
-        configButton()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Go", style: .plain, target: self, action: #selector(goTapped))
         
     }
     
-    func buttonTapped(_ sender: UIButton) {
+    func goTapped() {
         
         let navStackViewController = NavStackViewController()
+        self.navigationController?.delegate = self
         self.navigationController?.pushViewController(navStackViewController, animated: true)
+        
     }
     
 }
@@ -36,7 +38,7 @@ extension NavRootViewController {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "gomez")
+        imageView.image = #imageLiteral(resourceName: "noCoupleImage")
         
         view.addSubview(imageView)
         
@@ -48,25 +50,22 @@ extension NavRootViewController {
         
     }
     
-    fileprivate func configButton() {
+}
+
+// POD: Navigtation Extension
+
+extension NavRootViewController: UINavigationControllerDelegate {
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        let screenWidth = UIScreen.main.bounds.size.width
-        let screenHeight = UIScreen.main.bounds.size.height
-        
-        let buttonSize: CGFloat = 60
-        let buttonYconstant: CGFloat = 50
-        
-        let buttonXorigin = (screenWidth / 2) - (buttonSize / 2)
-        let buttonYorigin = screenHeight - buttonSize - buttonYconstant
-        
-        let button = UIButton(type: .custom)
-        button.backgroundColor = UIColor.black
-        button.setTitleColor(UIColor.white, for: UIControlState())
-        button.setTitle("GO", for: UIControlState())
-        button.frame = CGRect(x: buttonXorigin, y: buttonYorigin, width: buttonSize, height: buttonSize)
-        button.layer.cornerRadius = 0.5 * button.bounds.size.width
-        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-        view.addSubview(button)
+        switch operation {
+        case .pop:
+            return FTBAnimationController(displayType: .pop, direction: .right, speed: .moderate)
+        case .push:
+            return FTBAnimationController(displayType: .push, direction: .left, speed: .moderate)
+        default:
+            return nil
+        }
         
     }
     

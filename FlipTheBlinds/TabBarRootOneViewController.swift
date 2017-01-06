@@ -14,9 +14,8 @@ class TabBarRootOneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configImageView()
-        
+        self.tabBarController?.delegate = self
     }
 
 }
@@ -29,7 +28,7 @@ extension TabBarRootOneViewController {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "gomez")
+        imageView.image = #imageLiteral(resourceName: "redImage")
         
         view.addSubview(imageView)
         
@@ -38,6 +37,18 @@ extension TabBarRootOneViewController {
         imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         imageView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         imageView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        
+    }
+    
+}
+
+// POD: Tab Extension
+
+extension TabBarRootOneViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return FTBAnimationController(displayType: .tabSelected, direction: .down, speed: .moderate)
         
     }
     
