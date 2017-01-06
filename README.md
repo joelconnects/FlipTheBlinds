@@ -22,7 +22,7 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
 
 ## Usage
 
- * Modal Presentations
+ * **Modal Presentations (programmatic)**
   * Assign the `transitioningDelegate` of the view controller being presented to the presenting view controller.
   * Add an extension to the presenting view controller that includes adherence and methods for the `UIViewControllerTransitioningDelegate`.
   * Return an instance of the `FTBAnimationController(displayType:direction:speed:)` animator object.
@@ -56,6 +56,44 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
     }
 
   }
+```
+
+* **Modal Presentations (segues)**
+ * Assign the `transitioningDelegate` of the view controller being presented to the presenting view controller.
+ * Add an extension to the presenting view controller that includes adherence and methods for the `UIViewControllerTransitioningDelegate`.
+ * Return an instance of the `FTBAnimationController(displayType:direction:speed:)` animator object.
+
+```swift
+
+  // MARK: Segue Method
+
+  func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      
+      if segue.identifier == "segue", let destinationViewController = segue.destination as? toViewController {
+
+          destinationViewController.transitioningDelegate = self
+
+      }
+
+  }
+
+ // MARK: Transitioning Delegate
+
+ extension fromViewController: UIViewControllerTransitioningDelegate {
+
+   func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+       return FTBAnimationController(displayType: .present, direction: .up, speed: .moderate)
+
+   }
+
+   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+       return FTBAnimationController(displayType: .dismiss, direction: .down, speed: .moderate)
+
+   }
+
+ }
 ```
 
 
