@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'FlipTheBlinds'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'An animation transition creating a venetian blinds domino effect'
  
   s.description      = <<-DESC
