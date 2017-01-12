@@ -23,6 +23,8 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
 
 [![Screen Capture](https://img.youtube.com/vi/Pt0VacKUiWA/0.jpg)](https://www.youtube.com/watch?v=Pt0VacKUiWA)
 
+![Animated GIF](http://i.imgur.com/iGvfj49.gif)
+
 ## Requirements
 
  * iOS 8.0+
