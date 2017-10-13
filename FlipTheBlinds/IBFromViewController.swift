@@ -20,7 +20,7 @@ class IBFromViewController: UIViewController {
         
     }
     
-    func buttonTapped(_ sender: UIButton) {
+    @objc func buttonTapped(_ sender: UIButton) {
         
         self.performSegue(withIdentifier: "modalSegue", sender: self)
         

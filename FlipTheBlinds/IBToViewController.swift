@@ -20,7 +20,7 @@ class IBToViewController: UIViewController {
         
     }
     
-    func buttonTapped(_ sender: UIButton) {
+    @objc func buttonTapped(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
         

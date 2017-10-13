@@ -119,7 +119,7 @@ extension IBAppController {
             button.setTitle(title, for: .normal)
             button.setTitleColor(UIColor.white, for: .normal)
             button.addTarget(self, action: #selector(menuButtonTapped(_:)), for: .touchUpInside)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: 0.2)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 0.2))
             button.backgroundColor = UIColor.clear
             button.layer.borderColor = UIColor.white.cgColor
             button.layer.borderWidth = 1
@@ -165,7 +165,7 @@ extension IBAppController {
 
 extension IBAppController {
     
-    func menuSwiped(_ sender: UISwipeGestureRecognizer) {
+    @objc func menuSwiped(_ sender: UISwipeGestureRecognizer) {
         
         menuView.layer.shadowColor = UIColor.black.cgColor
         menuView.layer.shadowOpacity = 1
@@ -221,7 +221,7 @@ extension IBAppController {
         
     }
     
-    func menuButtonTapped(_ sender: UIButton) {
+    @objc func menuButtonTapped(_ sender: UIButton) {
         
         guard let titleText = sender.titleLabel?.text else { fatalError() }
         

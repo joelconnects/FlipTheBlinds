@@ -20,7 +20,7 @@ class FromViewController: UIViewController {
         
     }
     
-    func buttonTapped(_ sender: UIButton) {
+    @objc func buttonTapped(_ sender: UIButton) {
         
         let toViewController = ToViewController()
         

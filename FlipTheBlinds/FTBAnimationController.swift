@@ -220,16 +220,16 @@ extension FTBAnimationController {
         
         switch settings.direction {
         case .up:
-            transform = CATransform3DMakeRotation(CGFloat(M_PI), 1, 0, 0)
+            transform = CATransform3DMakeRotation(.pi, 1, 0, 0)
             transform.m34 = -0.002
         case .down:
-            transform = CATransform3DMakeRotation(CGFloat(M_PI), 1, 0, 0)
+            transform = CATransform3DMakeRotation(.pi, 1, 0, 0)
             transform.m34 = 0.002
         case .left:
-            transform = CATransform3DMakeRotation(CGFloat(M_PI), 0, 1, 0)
+            transform = CATransform3DMakeRotation(.pi, 0, 1, 0)
             transform.m34 = 0.002
         case .right:
-            transform = CATransform3DMakeRotation(CGFloat(M_PI), 0, 1, 0)
+            transform = CATransform3DMakeRotation(.pi, 0, 1, 0)
             transform.m34 = -0.002
         }
         

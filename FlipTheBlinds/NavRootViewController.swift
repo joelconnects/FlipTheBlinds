@@ -20,7 +20,7 @@ class NavRootViewController: UIViewController {
         
     }
     
-    func goTapped() {
+    @objc func goTapped() {
         
         let navStackViewController = NavStackViewController()
         
