@@ -156,7 +156,7 @@ extension FTBAnimationController {
         
         var size: CGSize
         var point: CGPoint
-        var orientation: UIImageOrientation
+        var orientation: UIImage.Orientation
         
         for index in 0..<slices {
             
@@ -220,16 +220,16 @@ extension FTBAnimationController {
         
         switch settings.direction {
         case .up:
-            transform = CATransform3DMakeRotation(CGFloat(M_PI), 1, 0, 0)
+            transform = CATransform3DMakeRotation(CGFloat.pi, 1, 0, 0)
             transform.m34 = -0.002
         case .down:
-            transform = CATransform3DMakeRotation(CGFloat(M_PI), 1, 0, 0)
+            transform = CATransform3DMakeRotation(CGFloat.pi, 1, 0, 0)
             transform.m34 = 0.002
         case .left:
-            transform = CATransform3DMakeRotation(CGFloat(M_PI), 0, 1, 0)
+            transform = CATransform3DMakeRotation(CGFloat.pi, 0, 1, 0)
             transform.m34 = 0.002
         case .right:
-            transform = CATransform3DMakeRotation(CGFloat(M_PI), 0, 1, 0)
+            transform = CATransform3DMakeRotation(CGFloat.pi, 0, 1, 0)
             transform.m34 = -0.002
         }
         
@@ -253,8 +253,8 @@ extension FTBAnimationController {
         fadeFromView.toValue = 0.9
         fadeFromView.duration = duration
         fadeFromView.beginTime = currentTime
-        fadeFromView.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        fadeFromView.fillMode = kCAFillModeForwards
+        fadeFromView.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
+        fadeFromView.fillMode = CAMediaTimingFillMode.forwards
         fadeFromView.isRemovedOnCompletion = false
         contentView.fromShadowView.layer.add(fadeFromView, forKey: nil)
         
@@ -272,7 +272,7 @@ extension FTBAnimationController {
         rotateToView.toValue = NSValue(caTransform3D: transform)
         rotateToView.duration = duration*2
         rotateToView.beginTime = currentTime
-        rotateToView.fillMode = kCAFillModeForwards
+        rotateToView.fillMode = CAMediaTimingFillMode.forwards
         rotateToView.isRemovedOnCompletion = false
         contentView.toView.layer.add(rotateToView, forKey: nil)
         
@@ -280,8 +280,8 @@ extension FTBAnimationController {
         fadeToView.toValue = 0.0
         fadeToView.duration = duration
         fadeToView.beginTime = currentTime + duration
-        fadeToView.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        fadeToView.fillMode = kCAFillModeForwards
+        fadeToView.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        fadeToView.fillMode = CAMediaTimingFillMode.forwards
         fadeToView.isRemovedOnCompletion = false
         contentView.toShadowView.layer.add(fadeToView, forKey: nil)
         
@@ -297,7 +297,7 @@ extension FTBAnimationController {
         scaleToView.toValue = 1.0
         scaleToView.duration = duration
         scaleToView.beginTime = currentTime + duration
-        scaleToView.fillMode = kCAFillModeForwards
+        scaleToView.fillMode = CAMediaTimingFillMode.forwards
         scaleToView.isRemovedOnCompletion = false
         contentView.toView.layer.add(scaleToView, forKey: nil)
         
@@ -306,8 +306,8 @@ extension FTBAnimationController {
         scaleUpToView.toValue = 1.02
         scaleUpToView.duration = duration
         scaleUpToView.beginTime = currentTime + duration*2
-        scaleUpToView.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        scaleUpToView.fillMode = kCAFillModeForwards
+        scaleUpToView.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        scaleUpToView.fillMode = CAMediaTimingFillMode.forwards
         scaleUpToView.isRemovedOnCompletion = false
         contentView.toView.layer.add(scaleUpToView, forKey: nil)
         
@@ -316,8 +316,8 @@ extension FTBAnimationController {
         scaleDownToView.toValue = 1.0
         scaleDownToView.duration = duration
         scaleDownToView.beginTime = currentTime + duration*3
-        scaleDownToView.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        scaleDownToView.fillMode = kCAFillModeForwards
+        scaleDownToView.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
+        scaleDownToView.fillMode = CAMediaTimingFillMode.forwards
         scaleDownToView.isRemovedOnCompletion = false
         contentView.toView.layer.add(scaleDownToView, forKey: nil)
         

@@ -20,7 +20,7 @@ class ToViewController: UIViewController {
         
     }
     
-    func buttonTapped(_ sender: UIButton) {
+    @objc func buttonTapped(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
         
@@ -62,8 +62,8 @@ extension ToViewController {
         let button = UIButton()
         button.alpha = 0.7
         button.backgroundColor = UIColor.black
-        button.setTitleColor(UIColor.white, for: UIControlState())
-        button.setTitle("BACK", for: UIControlState())
+        button.setTitleColor(UIColor.white, for: UIControl.State())
+        button.setTitle("BACK", for: UIControl.State())
         button.frame = CGRect(x: buttonXorigin, y: buttonYorigin, width: buttonSize, height: buttonSize)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
         
