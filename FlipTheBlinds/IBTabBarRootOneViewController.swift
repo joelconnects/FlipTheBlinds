@@ -26,7 +26,7 @@ class IBTabBarRootOneViewController: UIViewController {
 
 extension IBTabBarRootOneViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

@@ -52,7 +52,7 @@ class AppController: UIViewController {
 
 extension AppController {
 
-    fileprivate func configureContainerView() {
+    private func configureContainerView() {
         
         containerView = UIView()
         containerView.frame = view.bounds
@@ -61,7 +61,7 @@ extension AppController {
         
     }
     
-    fileprivate func configureMenuView() {
+    private func configureMenuView() {
         
         menuLayoutView = UIView()
         menuLayoutView.backgroundColor = UIColor.clear
@@ -134,7 +134,7 @@ extension AppController {
 
     }
 
-    fileprivate func configureMenuButton() {
+    private func configureMenuButton() {
         
         menuButton = UIImageView()
         menuButton.image = #imageLiteral(resourceName: "menuButton")
@@ -250,7 +250,7 @@ extension AppController {
 
 extension AppController {
     
-    fileprivate func generateViewController(forType type: DemoType) -> UIViewController {
+    private func generateViewController(forType type: DemoType) -> UIViewController {
         
         switch type {
         case .modal:
@@ -263,7 +263,7 @@ extension AppController {
         
     }
     
-    fileprivate func generateTabBarController() -> UITabBarController {
+    private func generateTabBarController() -> UITabBarController {
         
         let tabBarController = UITabBarController()
         let rootOneVC = TabBarRootOneViewController()
@@ -288,7 +288,7 @@ extension AppController {
 
 extension AppController {
     
-    fileprivate func addInitialActing(viewController: UIViewController) {
+    private func addInitialActing(viewController: UIViewController) {
         
         self.addChild(viewController)
         containerView.addSubview(viewController.view)
@@ -298,7 +298,7 @@ extension AppController {
         
     }
     
-    fileprivate func switchToViewController(withDemoType type: DemoType) {
+    private func switchToViewController(withDemoType type: DemoType) {
         
         let exitingViewController = actingViewController
         exitingViewController?.willMove(toParent: nil)

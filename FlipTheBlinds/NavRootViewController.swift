@@ -37,7 +37,7 @@ class NavRootViewController: UIViewController {
 
 extension NavRootViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

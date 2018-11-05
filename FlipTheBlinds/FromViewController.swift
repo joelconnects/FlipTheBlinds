@@ -37,7 +37,7 @@ class FromViewController: UIViewController {
 
 extension FromViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -53,7 +53,7 @@ extension FromViewController {
         
     }
     
-    fileprivate func configButton() {
+    private func configButton() {
         
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height

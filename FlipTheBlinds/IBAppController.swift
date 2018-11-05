@@ -52,7 +52,7 @@ class IBAppController: UIViewController {
 
 extension IBAppController {
     
-    fileprivate func configureContainerView() {
+    private func configureContainerView() {
         
         containerView = UIView()
         containerView.frame = view.bounds
@@ -61,7 +61,7 @@ extension IBAppController {
         
     }
     
-    fileprivate func configureMenuView() {
+    private func configureMenuView() {
         
         menuLayoutView = UIView()
         menuLayoutView.backgroundColor = UIColor.clear
@@ -134,7 +134,7 @@ extension IBAppController {
         
     }
     
-    fileprivate func configureMenuButton() {
+    private func configureMenuButton() {
         
         menuButton = UIImageView()
         menuButton.image = #imageLiteral(resourceName: "menuButton")
@@ -250,7 +250,7 @@ extension IBAppController {
 
 extension IBAppController {
     
-    fileprivate func generateViewController(forType type: DemoType) -> UIViewController {
+    private func generateViewController(forType type: DemoType) -> UIViewController {
         
         switch type {
         case .modal:
@@ -264,7 +264,7 @@ extension IBAppController {
         
     }
     
-    fileprivate func generateTabBarController() -> UITabBarController {
+    private func generateTabBarController() -> UITabBarController {
         
         let rootOneVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabRootOneVC")
         let rootTwoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabRootTwoVC")
@@ -281,7 +281,7 @@ extension IBAppController {
 
 extension IBAppController {
     
-    fileprivate func addInitialActing(viewController: UIViewController) {
+    private func addInitialActing(viewController: UIViewController) {
         
         self.addChild(viewController)
         containerView.addSubview(viewController.view)
@@ -291,7 +291,7 @@ extension IBAppController {
         
     }
     
-    fileprivate func switchToViewController(withDemoType type: DemoType) {
+    private func switchToViewController(withDemoType type: DemoType) {
         
         let exitingViewController = actingViewController
         exitingViewController?.willMove(toParent: nil)

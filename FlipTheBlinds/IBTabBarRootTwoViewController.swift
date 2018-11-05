@@ -22,7 +22,7 @@ class IBTabBarRootTwoViewController: UIViewController {
 
 extension IBTabBarRootTwoViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

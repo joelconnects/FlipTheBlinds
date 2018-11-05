@@ -24,7 +24,7 @@ class IBNavStackViewController: UIViewController {
 
 extension IBNavStackViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

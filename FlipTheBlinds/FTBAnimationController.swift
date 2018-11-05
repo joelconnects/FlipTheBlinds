@@ -12,11 +12,11 @@ import UIKit
 
 public class FTBAnimationController: NSObject {
     
-    fileprivate let displayType: DisplayType
-    fileprivate let settings: (direction: Direction, speed: Speed)
-    fileprivate let sliceType: FTBSliceType
+    private let displayType: DisplayType
+    private let settings: (direction: Direction, speed: Speed)
+    private let sliceType: FTBSliceType
     
-    fileprivate var slices: Int {
+    private var slices: Int {
         switch settings.direction {
         case .up, .down:
             return 8
@@ -25,7 +25,7 @@ public class FTBAnimationController: NSObject {
         }
     }
     
-    fileprivate var delayMultiplier: Double {
+    private var delayMultiplier: Double {
         switch settings.direction {
         case .up, .down:
             return 0.05
@@ -34,11 +34,11 @@ public class FTBAnimationController: NSObject {
         }
     }
     
-    fileprivate var delay: Double {
+    private var delay: Double {
         return settings.speed.rawValue * delayMultiplier
     }
     
-    fileprivate var intervalDuration: Double {
+    private var intervalDuration: Double {
         let durationIntervals = 4.0
         return (((Double(slices)-1) * delay) - settings.speed.rawValue) / -durationIntervals
     }
@@ -131,7 +131,7 @@ extension FTBAnimationController: UIViewControllerAnimatedTransitioning {
 
 extension FTBAnimationController {
     
-    fileprivate func generateImage(ofView view: UIView) -> UIImage {
+    private func generateImage(ofView view: UIView) -> UIImage {
         
         var image = UIImage()
         switch displayType {
@@ -144,7 +144,7 @@ extension FTBAnimationController {
         
     }
     
-    fileprivate func generateAnimationView(forContainerView view: UIView) -> UIView {
+    private func generateAnimationView(forContainerView view: UIView) -> UIView {
         
         let backgroundView = UIView(frame: view.frame)
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
@@ -152,7 +152,7 @@ extension FTBAnimationController {
         return backgroundView
     }
     
-    fileprivate func addContentViews(toAnimationView view: UIView, fromImages: [UIImage], toImages: [UIImage]) {
+    private func addContentViews(toAnimationView view: UIView, fromImages: [UIImage], toImages: [UIImage]) {
         
         var size: CGSize
         var point: CGPoint
@@ -187,7 +187,7 @@ extension FTBAnimationController {
 
 extension FTBAnimationController {
     
-    fileprivate func animate(animationView: UIView, completion: @escaping ()->()) {
+    private func animate(animationView: UIView, completion: @escaping ()->()) {
         
         var delayIntervals = [Int](0..<slices)
         var intervals: [Int]
@@ -214,7 +214,7 @@ extension FTBAnimationController {
         
     }
     
-    fileprivate func animate(contentView: ContentView, intervalDuration duration: TimeInterval, delay: TimeInterval, completion: @escaping ()->()) {
+    private func animate(contentView: ContentView, intervalDuration duration: TimeInterval, delay: TimeInterval, completion: @escaping ()->()) {
         
         var transform: CATransform3D
         
@@ -329,7 +329,7 @@ extension FTBAnimationController {
 
 // MARK: Animation Content View
 
-fileprivate final class ContentView: UIView {
+private final class ContentView: UIView {
     
     var fromView: UIImageView!
     var toView: UIImageView!

@@ -32,7 +32,7 @@ class IBToViewController: UIViewController {
 
 extension IBToViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -48,7 +48,7 @@ extension IBToViewController {
         
     }
     
-    fileprivate func configButton() {
+    private func configButton() {
         
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
