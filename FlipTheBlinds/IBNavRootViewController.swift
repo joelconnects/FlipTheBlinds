@@ -28,7 +28,7 @@ class IBNavRootViewController: UIViewController {
 
 extension IBNavRootViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -50,7 +50,7 @@ extension IBNavRootViewController {
 
 extension IBNavRootViewController: UINavigationControllerDelegate {
     
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         switch operation {
         case .pop:

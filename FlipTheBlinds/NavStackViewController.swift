@@ -24,7 +24,7 @@ class NavStackViewController: UIViewController {
 
 extension NavStackViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

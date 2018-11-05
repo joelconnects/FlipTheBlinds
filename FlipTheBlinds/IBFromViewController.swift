@@ -20,7 +20,7 @@ class IBFromViewController: UIViewController {
         
     }
     
-    func buttonTapped(_ sender: UIButton) {
+    @objc func buttonTapped(_ sender: UIButton) {
         
         self.performSegue(withIdentifier: "modalSegue", sender: self)
         
@@ -43,7 +43,7 @@ class IBFromViewController: UIViewController {
 
 extension IBFromViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -59,7 +59,7 @@ extension IBFromViewController {
         
     }
     
-    fileprivate func configButton() {
+    private func configButton() {
         
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
@@ -73,8 +73,8 @@ extension IBFromViewController {
         let button = UIButton(type: .custom)
         button.alpha = 0.7
         button.backgroundColor = UIColor.black
-        button.setTitleColor(UIColor.white, for: UIControlState())
-        button.setTitle("GO", for: UIControlState())
+        button.setTitleColor(UIColor.white, for: UIControl.State())
+        button.setTitle("GO", for: UIControl.State())
         button.frame = CGRect(x: buttonXorigin, y: buttonYorigin, width: buttonSize, height: buttonSize)
         button.layer.cornerRadius = 0.5 * button.bounds.size.width
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)

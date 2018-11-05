@@ -22,7 +22,7 @@ class IBTabBarRootThreeViewController: UIViewController {
 
 extension IBTabBarRootThreeViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

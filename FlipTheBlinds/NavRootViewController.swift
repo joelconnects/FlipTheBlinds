@@ -20,7 +20,7 @@ class NavRootViewController: UIViewController {
         
     }
     
-    func goTapped() {
+    @objc func goTapped() {
         
         let navStackViewController = NavStackViewController()
         
@@ -37,7 +37,7 @@ class NavRootViewController: UIViewController {
 
 extension NavRootViewController {
     
-    fileprivate func configImageView() {
+    private func configImageView() {
         
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -59,7 +59,7 @@ extension NavRootViewController {
 
 extension NavRootViewController: UINavigationControllerDelegate {
     
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         switch operation {
         case .pop:
