@@ -2,7 +2,7 @@
 )](https://developer.apple.com/iphone/index.action)
 [![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
 )](https://developer.apple.com/swift)
-[![Swift 3.0](https://img.shields.io/badge/Swift-3.x-orange.svg?style=flat
+[![Swift 4.2](https://img.shields.io/badge/Swift-4.x-orange.svg?style=flat
 )](https://developer.apple.com/swift/)
 [![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
 )](http://mit-license.org)
@@ -157,7 +157,8 @@ FlipTheBlinds is an animation transition that creates a venetian blinds domino e
 
 ## Known Issues
 
- * Drawing/Rendering images in the animator object is problematic for the simulator, especially iPhone 7/7P. Device testing is recommended.
+ * The performance of `UIGraphicsImageRenderer` during modal transitions is slower. Further optimization is needed.
+ * Drawing/Rendering images in the animator object can be problematic for the simulator. Device testing is recommended.
  * `drawHierarchy(in:afterScreenUpdates:)` is used for modal presentations and may cause an inconspicuous flicker.   
 
 ## License
